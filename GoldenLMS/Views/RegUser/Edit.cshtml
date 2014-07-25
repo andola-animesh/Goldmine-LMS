@@ -1,0 +1,73 @@
+﻿@model GoldenLMS.Models.UserTbl
+
+@{
+    ViewBag.Title = "Edit";
+}
+<div class="bg-white b-1px-gray-light b-top-none brad-bottom brad-tr b-bot-2px-gray-light">
+    <div class="col-md-4"></div>
+    <div class="col-md-8">
+        <h2>Edit User</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <legend></legend>
+
+                @Html.HiddenFor(model => model.Id)
+
+                <div class="row">
+                    <div class="col-md-2">
+                         @Html.LabelFor(m => m.Name, new { @class="control-label"})
+                    </div>
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(model => model.Name, new { @class="form-control",title="Enter Name"})
+                        @Html.ValidationMessageFor(model => model.Name)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="height: 10px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                         @Html.LabelFor(m => m.EmailId, new { @class="control-label"})
+                    </div>
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(model => model.EmailId, new { @class="form-control",title="Enter Email Id"})
+                        @Html.ValidationMessageFor(model => model.EmailId)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="height: 10px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                         @Html.LabelFor(m => m.Password, new { @class="control-label"})
+                    </div>
+                    <div class="col-md-4">
+                        @Html.PasswordFor(model => model.Password, new { @class="form-control",title="Enter Password"})
+                        @Html.ValidationMessageFor(model => model.Password)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="height: 10px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 pull-right">
+                        <input type="submit" class="btn btn-success" value="Save" /> |
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
+                </div>
+            </fieldset>
+        }
+
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

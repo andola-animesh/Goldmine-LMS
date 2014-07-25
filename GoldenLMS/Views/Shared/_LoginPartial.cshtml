@@ -1,0 +1,23 @@
+﻿@if (Session["UserId"] != null) //(Request.IsAuthenticated)
+{
+    <text>
+        <div class="pull-left lgout">
+            @*@Html.Label(User.Identity.Name)*@
+               Hi, @Html.Label(Convert.ToString(Session["Name"]))! | &nbsp;
+        </div>
+        <div class="pull-left lgout">  
+               @using (Html.BeginForm("LogOff", "Home", FormMethod.Post, new { id = "logoutForm" }))
+                  {
+                     @Html.AntiForgeryToken()
+                      <a href="javascript:document.getElementById('logoutForm').submit()">Sign Out</a> 
+                      
+                  }
+        </div>
+    </text>
+}
+else
+{
+    <ul>
+       @*@Html.ActionLink("Login", "Index", "Home")*@
+    </ul>
+}

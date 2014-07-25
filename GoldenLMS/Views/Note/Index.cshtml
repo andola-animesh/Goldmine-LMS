@@ -1,0 +1,42 @@
+﻿@model IEnumerable<GoldenLMS.Models.NoteTbl>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2>Index</h2>
+<div class="bg-white b-1px-gray-light b-top-none brad-bottom brad-tr b-bot-2px-gray-light">
+    <div class="col-md-12">
+        <p>
+            @Html.ActionLink("Create New", "FileUpload")
+        </p>
+        <table style="width: 100%;" class="table table-striped">
+            <tr>
+                <th style="width: 35%; padding-left: 2px;" class="control-label">Attachment
+                </th>
+                <th style="width: 45%; padding-left: 2px;" class="control-label">Comment
+                </th>
+                <th style="width: 20%; text-align: center;" class="control-label">Action
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="width: 35%; padding-left: 2px;">
+                        @Html.ActionLink(item.Attachment, "Details", new { id = item.Id }, new { @class = "" })
+                    </td>
+                    <td style="width: 45%; padding-left: 2px;">
+                        @Html.DisplayFor(modelItem => item.Comment)
+                    </td>
+                    <td style="width: 20%; text-align: center;">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

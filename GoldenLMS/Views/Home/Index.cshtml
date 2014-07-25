@@ -1,0 +1,64 @@
+﻿@model GoldenLMS.Models.UserTbl
+@{
+    ViewBag.Title = "Login to Goldmine LMS";
+}
+
+<div class="bg-white b-1px-gray-light b-top-none brad-bottom brad-tr b-bot-2px-gray-light">
+
+    <div class="col-md-12">
+        <hgroup class="title">
+            <h1>@ViewBag.Title</h1>
+        </hgroup>
+
+        <section id="loginForm">
+            @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <fieldset>
+                    <legend></legend>
+                    <div class="row">
+                        <div class="col-md-2">
+                            @Html.LabelFor(m => m.Name, new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", title = "Enter Name" })
+                            @Html.ValidationMessageFor(m => m.Name)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" style="height: 10px;">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", title = "Enter Password" })
+                            @Html.ValidationMessageFor(m => m.Password)
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12" style="height: 10px;">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10 pull-right">
+
+                            <input type="submit" class="btn btn-success" value="Log in" />
+                            |  @Html.ActionLink("Register", "Create", "RegUser") if you don't have an account.
+
+                        </div>
+                    </div>
+                </fieldset>
+            }
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

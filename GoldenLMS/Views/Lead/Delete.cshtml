@@ -1,0 +1,116 @@
+﻿@model IEnumerable<GoldenLMS.Models.LeadUser>
+
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+<div class="bg-white b-1px-gray-light b-top-none brad-bottom brad-tr b-bot-2px-gray-light">
+    <div class="col-md-12">
+        <h2>Delete Lead</h2>
+
+        <h3>Are you sure you want to delete this?</h3>
+        <fieldset>
+            <legend></legend>
+
+            @foreach (var item in Model)
+            {
+
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => item.Title, new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.DisplayFor(model => item.Title, new { @class = "control-label" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12" style="height: 10px;">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => item.ContactPerson, new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.DisplayFor(model => item.ContactPerson, new { @class = "control-label" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12" style="height: 10px;">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => item.EmailId, new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.DisplayFor(model => item.EmailId, new { @class = "control-label" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12" style="height: 10px;">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => item.ContactNo, new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.DisplayFor(model => item.ContactNo, new { @class = "control-label" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12" style="height: 10px;">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => item.Value, new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.DisplayFor(model => item.Value, new { @class = "control-label" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12" style="height: 10px;">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => item.Name, new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.DisplayFor(model => item.Name, new { @class = "control-label" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12" style="height: 10px;">
+                    </div>
+                </div>
+            }
+
+        </fieldset>
+        @using (Html.BeginForm())
+        {
+            <div class="row">
+                <div class="col-md-10 pull-right">
+                    <input type="submit" class="btn btn-success" value="Delete" />
+                    |
+                    @Html.ActionLink("Back to List", "StatusIndex")
+                </div>
+            </div>
+        }
+    </div>
+</div>

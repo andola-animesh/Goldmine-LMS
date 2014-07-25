@@ -1,0 +1,61 @@
+﻿@model GoldenLMS.Models.NoteTbl
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+<div class="bg-white b-1px-gray-light b-top-none brad-bottom brad-tr b-bot-2px-gray-light">
+    <div class="col-md-12">
+        <h2>Edit Note</h2>
+
+        @using (Html.BeginForm("Edit", "Note", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <legend></legend>
+
+                @Html.HiddenFor(model => model.NoteId)
+                 @Html.HiddenFor(model => model.LeadId)
+
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(m => m.Attachment, new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.Attachment)
+                        @Html.TextBox("Attachment", "", new { type = "file" })
+                        <span class="field-validation-error" id="spanfile"></span>
+                        @Html.ValidationMessageFor(model => model.Attachment)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="height: 10px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.LabelFor(m => m.Comment, new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.TextAreaFor(model => model.Comment, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Comment)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="height: 10px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 pull-right">
+                        <input type="submit" class="btn btn-success" value="Save" />
+                        | @Html.ActionLink("Back to List", "FileUpload" , new { id = Model.LeadId })
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

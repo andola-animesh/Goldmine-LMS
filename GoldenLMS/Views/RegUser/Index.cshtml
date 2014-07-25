@@ -1,0 +1,51 @@
+﻿@model IEnumerable<GoldenLMS.Models.UserTbl>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>User Details</h2>
+<div class="bg-white b-1px-gray-light b-top-none brad-bottom brad-tr b-bot-2px-gray-light">
+    <div class="col-md-2"></div>
+
+    <div class="col-md-10">
+        <div class="row">
+            <div class="col-md-12" style="height: 10px;">
+            </div>
+        </div>
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+
+        <div class="col-md-8">
+            <table style="width: 100%;" class="table table-striped">
+                <tr>
+                    <th style="width: 30%; padding-left: 10px;">Name
+                    </th>
+                    <th style="width: 30%; padding-left: 10px;">EmailId
+                    </th>
+                    <th style="width: 40%; text-align: center;">Action
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="width: 30%; padding-left: 10px;">
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td style="width: 30%; padding-left: 10px;">
+                            @Html.DisplayFor(modelItem => item.EmailId)
+                        </td>
+
+                        <td style="width: 30%; text-align: center;">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

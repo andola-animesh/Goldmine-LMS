@@ -1,0 +1,107 @@
+﻿@model GoldenLMS.Models.LeadUser
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+<div class="bg-white b-1px-gray-light b-top-none brad-bottom brad-tr b-bot-2px-gray-light">
+   <div class="col-md-12">
+        <h2>Lead Activity</h2>
+
+        <fieldset>
+            <legend></legend>
+
+            <div class="row">
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.Title, new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.DisplayFor(model => model.Title, new { @class = "control-label" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12" style="height: 10px;">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                   @Html.LabelFor(m => m.ContactPerson, new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.DisplayFor(model => model.ContactPerson, new { @class = "control-label" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12" style="height: 10px;">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                     @Html.LabelFor(m => m.EmailId, new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.DisplayFor(model => model.EmailId, new { @class = "control-label" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12" style="height: 10px;">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                     @Html.LabelFor(m => m.ContactNo, new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.DisplayFor(model => model.ContactNo, new { @class = "control-label" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12" style="height: 10px;">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.Value, new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.DisplayFor(model => model.Value, new { @class = "control-label" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12" style="height: 10px;">
+                </div>
+            </div>
+
+           @* <div class="row">
+                <div class="col-md-3">
+                   Assigned To
+                </div>
+                <div class="col-md-4"> 
+                  @Html.DisplayFor( model => model.Name)
+                </div>
+            </div>*@
+
+            <div class="row">
+                <div class="col-md-12" style="height: 10px;">
+                </div>
+            </div>
+
+        </fieldset>
+        <div class="row">
+            <div class="col-md-9 pull-right">
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "StatusIndex")
+            </div>
+        </div>
+
+    </div>
+</div>

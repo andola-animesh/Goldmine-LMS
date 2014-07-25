@@ -1,0 +1,58 @@
+﻿@model IEnumerable<GoldenLMS.Models.LeadNote>
+
+<div class="bg-white b-1px-gray-light b-top-none brad-bottom brad-tr b-bot-2px-gray-light">
+    <div class="col-md-12">
+
+        @using (Html.BeginForm("EditNote", "Note", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.ValidationSummary(true);
+
+            <fieldset>
+                <legend></legend>
+                
+
+                @foreach (var m in Model)
+                {
+                    @Html.HiddenFor(model => m.NoteId)
+                    <div class="row">
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => m.Attachment, new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => m.Attachment)
+                            @Html.TextBox("Attachment", "", new { type = "file" })
+                            <span class="field-validation-error" id="spanfile"></span>
+                            @Html.ValidationMessageFor(model => m.Attachment)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" style="height: 10px;">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => m.Comment, new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.TextAreaFor(model => m.Comment, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => m.Comment)
+                        </div>
+                    </div>
+                }
+                <div class="row">
+                    <div class="col-md-12" style="height: 10px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9 pull-right">
+                        <input type="submit" class="btn btn-success" id="btnSubmit" value="Submit" />
+                    </div>
+                </div>
+
+            </fieldset>
+        }
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

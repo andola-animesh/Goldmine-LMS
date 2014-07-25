@@ -1,0 +1,108 @@
+﻿@model PagedList.IPagedList<GoldenLMS.Models.LeadUser>
+
+@using PagedList.Mvc;
+@using PagedList;
+@*@using System.Web.HttpRequestBase;*@
+@{
+    ViewBag.Title = "StatusIndex";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+
+<div class="bg-white b-1px-gray-light b-top-none brad-bottom brad-tr b-bot-2px-gray-light">
+    <div class="col-md-12">
+        <h2>Lead Details</h2>
+
+        <p class="btn btn-link">
+            @Html.ActionLink("Create New", "Create")
+        </p>
+
+        @{
+          var status = Request.QueryString["status"];
+        }
+
+               
+            <ul class="nav nav-tabs" id="myTab">
+
+                <li id="liAll" @{if (status == null || status == "All")
+                                 {<text>class="active"</text>}}>@Html.ActionLink("All", "StatusIndex", new { status = "All" }) </li>
+
+                <li id="liNew" @{if (status == "New")
+                                 {<text>class="active"</text>}}>@Html.ActionLink("New", "StatusIndex", new { status = "New" }) </li>
+
+                <li id="liInprogress" @{if (status == "In-progress")
+                                        {<text>class="active"</text>}}>@Html.ActionLink("In-progress", "StatusIndex", new { status = "In-progress" })</li>
+
+                <li id="liWin" @{if (status == "Win")
+                                 {<text>class="active"</text>}}>@Html.ActionLink("Win", "StatusIndex", new { status = "Win" })</li>
+
+                <li id="liLost" @{if (status == "Lost")
+                                  {<text>class="active"</text>}}>@Html.ActionLink("Lost", "StatusIndex", new { status = "Lost" })</li>
+
+            </ul>
+       
+
+        <table style="width: 100%;" class="table table-striped  table-hover">
+            <tr>
+                <th style="width: 15%; padding-left: 2px;" class="control-label">
+                    @Html.ActionLink("Title", "StatusIndex", new { sortOrder = "Title", CurrentSort = ViewBag.CurrentSort })
+                </th>
+                <th style="width: 15%; padding-left: 2px;" class="control-label">
+                    @Html.ActionLink("Contact Person", "StatusIndex", new { sortOrder = "ContactPerson", CurrentSort = ViewBag.CurrentSort })
+                </th>
+                <th style="width: 15%; padding-left: 2px;" class="control-label">
+                    @Html.ActionLink("Email Id", "StatusIndex", new { sortOrder = "EmailId", CurrentSort = ViewBag.CurrentSort })
+                </th>
+                <th style="width: 10%; padding-left: 2px;" class="control-label">
+                    Contact No
+                </th>
+                <th style="width: 10%; padding-left: 2px;" class="control-label">
+                    @Html.ActionLink("Value(in $)", "StatusIndex", new { sortOrder = "Value", CurrentSort = ViewBag.CurrentSort })
+                </th>
+                <th style="width: 15%; padding-left: 2px;" class="control-label">
+                    @Html.ActionLink("Assigned To", "StatusIndex", new { sortOrder = "Name", CurrentSort = ViewBag.CurrentSort })
+                </th>
+                <th style="width: 20%; text-align: center;" class="control-label">Action
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="width: 15%; padding-left: 2px;">
+                        @Html.ActionLink(item.Title, "FileUpload", "Note", new { id = item.Id }, new { @class = "" })
+                    </td>
+                    <td style="width: 15%; padding-left: 2px;">
+                        @Html.DisplayFor(modelItem => item.ContactPerson)
+                    </td>
+                    <td style="width: 15%; padding-left: 2px;">
+                        @Html.DisplayFor(modelItem => item.EmailId)
+                    </td>
+                    <td style="width: 10%; padding-left: 2px;">
+                        @Html.DisplayFor(modelItem => item.ContactNo)
+                    </td>
+                    <td style="width: 10%; padding-left: 2px;">
+                        @Html.DisplayFor(modelItem => item.Value)
+                    </td>
+                    <td style="width: 15%; padding-left: 2px;">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td style="width: 20%; text-align: center;">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td colspan="7">
+                    <div style="text-align: center">
+                        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+                        of @Model.PageCount
+                        @Html.PagedListPager(Model, page => Url.Action("StatusIndex", new { page }), PagedListRenderOptions.TwitterBootstrapPagerAligned)
+
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

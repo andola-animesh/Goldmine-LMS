@@ -1,0 +1,59 @@
+﻿@model GoldenLMS.Models.NoteTbl
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+<div class="bg-white b-1px-gray-light b-top-none brad-bottom brad-tr b-bot-2px-gray-light">
+   <div class="col-md-12">
+        <h2>Create Note</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <legend></legend>
+
+                <div class="row">
+                    <div class="col-md-3">
+                         @Html.LabelFor(m => m.Attachment, new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.Attachment)
+                        @Html.ValidationMessageFor(model => model.Attachment)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="height: 10px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                         @Html.LabelFor(m => m.Comment, new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.Comment)
+                        @Html.ValidationMessageFor(model => model.Comment)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="height: 10px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9 pull-right">
+                        <input type="submit" class="btn btn-success" value="Create" />
+                        |  @Html.ActionLink("Back to List", "Index")
+                    </div>
+                </div>
+
+            </fieldset>
+        }
+
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

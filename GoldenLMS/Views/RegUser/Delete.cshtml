@@ -1,0 +1,56 @@
+﻿@model GoldenLMS.Models.UserTbl
+
+@{
+    ViewBag.Title = "Delete";
+}
+<div class="bg-white b-1px-gray-light b-top-none brad-bottom brad-tr b-bot-2px-gray-light">
+    <div class="col-md-4"></div>
+    <div class="col-md-8">
+        <h2>Delete User</h2>
+
+        <h3>Are you sure you want to delete this?</h3>
+        <fieldset>
+            <legend></legend>
+
+            <div class="row">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Name, new { @class="control-label"})
+                </div>
+                <div class="col-md-4">
+                    @Html.DisplayFor(model => model.Name, new { @class="control-label"})
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12" style="height: 10px;">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.EmailId, new { @class="control-label"})
+                </div>
+                <div class="col-md-4">
+                    @Html.DisplayFor(model => model.EmailId, new { @class="control-label"})
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12" style="height: 10px;">
+                </div>
+            </div>
+
+
+        </fieldset>
+        @using (Html.BeginForm())
+        {
+            <div class="row">
+                <div class="col-md-12 pull-right">
+                    <input type="submit" class="btn btn-success" value="Delete" />
+                    |
+        @Html.ActionLink("Back to List", "Index")
+                </div>
+            </div>
+        }
+    </div>
+</div>

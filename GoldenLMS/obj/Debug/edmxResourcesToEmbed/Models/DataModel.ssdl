@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GoldenLMSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="GoldenLMSModelStoreContainer">
+    <EntitySet Name="LeadTbl" EntityType="GoldenLMSModel.Store.LeadTbl" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NoteTbl" EntityType="GoldenLMSModel.Store.NoteTbl" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserTbl" EntityType="GoldenLMSModel.Store.UserTbl" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="LeadTbl">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ContactPerson" Type="varchar" MaxLength="100" />
+    <Property Name="EmailId" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ContactNo" Type="varchar" MaxLength="50" />
+    <Property Name="Value" Type="int" />
+    <Property Name="AssignUser" Type="int" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="IsActive" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="NoteTbl">
+    <Key>
+      <PropertyRef Name="NoteId" />
+    </Key>
+    <Property Name="NoteId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="LeadId" Type="int" Nullable="false" />
+    <Property Name="Attachment" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Comment" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="IsActive" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="UserTbl">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="EmailId" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Password" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="IsActive" Type="char" MaxLength="1" />
+  </EntityType>
+</Schema>
