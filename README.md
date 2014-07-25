@@ -9,6 +9,9 @@ Get Started
 Create a new database titled GoldmineLMS in SQL Server 2008 Express and execute sql_scripts.sql to create tables with test data.
 Change web.config file as per your sql server database name and credentials.
 
-Please note that traditional session is used for securing secured pages.
-Bbut the creation of user and editing user info uses SimpleMembership.
+Please note that the traditional asp.net session is used for securing secured pages.
+But the creation of user and editing user info uses SimpleMembership.
+
 We are working on implementing Microsoft Identity framework(SimpleMembership) for login,logoff and page security. 
+
+Please fill free to fork it.
